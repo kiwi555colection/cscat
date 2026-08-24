@@ -96,12 +96,15 @@ nav ul a:hover { color: var(--yellow); }
 .hero-right { background: var(--navy); }
 .hero-cat {
   position: absolute;
-  top: 55%; left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  height: 70%; width: auto;
-  max-height: 640px;
+  max-height: 75vh;
+  max-width: 92%;
+  width: auto;
+  height: auto;
   z-index: 2;
   filter: drop-shadow(0 10px 40px rgba(0,0,0,0.35));
+  pointer-events: none;
 }
 .hero-content {
   position: absolute;
