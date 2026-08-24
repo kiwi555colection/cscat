@@ -193,36 +193,70 @@ nav ul a:hover { color: var(--yellow); }
 @keyframes pulse { 50% { opacity: 0.4; } }
 
 .killfeed {
-  position: absolute;
-  top: 12px; right: 12px;
-  display: flex; flex-direction: column;
-  gap: 4px;
-  pointer-events: none;
-  max-width: 320px;
+  position: relative;
+  width: 100%;
+  height: 34px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.35);
+  border-top: 1px solid rgba(245,166,35,0.15);
 }
-.kill-item {
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(11,14,36,0.85);
+.killfeed::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 80px;
+  background: linear-gradient(to right, var(--dark), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+.live-badge {
+  position: absolute;
+  left: 10px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: var(--dark);
+  color: var(--red);
   padding: 4px 10px;
   font-family: 'JetBrains Mono';
-  font-size: 11px;
-  border-left: 2px solid var(--yellow);
-  animation: killIn 0.3s ease-out;
-  transition: opacity 0.5s;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  display: flex; align-items: center; gap: 6px;
+  border-left: 2px solid var(--red);
 }
-.kill-item.fading { opacity: 0; }
+.live-dot {
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: livePulse 1.5s infinite;
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.kill-item {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 12px;
+  font-family: 'JetBrains Mono';
+  font-size: 11px;
+  white-space: nowrap;
+  animation: killTick 14s linear forwards;
+  will-change: left;
+}
+@keyframes killTick {
+  from { left: 100%; }
+  to { left: -420px; }
+}
 .kill-item .attacker.t { color: var(--yellow); }
 .kill-item .attacker.ct { color: var(--ct-blue); }
 .kill-item .target.t { color: var(--yellow); opacity: 0.6; text-decoration: line-through; }
 .kill-item .target.ct { color: var(--ct-blue); opacity: 0.6; text-decoration: line-through; }
 .kill-item .weapon { color: var(--white); opacity: 0.7; }
 .kill-item .hs { color: var(--red); font-size: 10px; }
-@keyframes killIn {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
 @media (max-width: 720px) {
-  .killfeed { position: static; margin: 0 12px 12px; max-width: 100%; }
   .round-hud { flex-wrap: wrap; gap: 16px; padding: 14px; }
   .hud-timer { font-size: 28px; min-width: 80px; padding: 0 12px; }
 }

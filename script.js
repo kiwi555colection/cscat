@@ -157,10 +157,8 @@ function pushKill(attackerName, attackerSide, weaponIcon, targetName, targetSide
     '<span class="weapon">' + weaponIcon + '</span>' +
     (isHeadshot ? '<span class="hs">💥</span>' : '') +
     '<span class="target ' + targetSide + '">' + targetName + '</span>';
-  killfeed.prepend(item);
-  setTimeout(() => item.classList.add('fading'), 3200);
-  setTimeout(() => { if (item.parentNode) item.remove(); }, 3800);
-  while (killfeed.children.length > 4) killfeed.lastChild.remove();
+  killfeed.appendChild(item);
+  item.addEventListener('animationend', () => item.remove());
 }
 
 function randomScriptedKill() {
