@@ -34,11 +34,16 @@ nav {
 }
 .brand { display: flex; align-items: center; gap: 10px; }
 .brand-mark {
-  width: 32px; height: 32px;
-  background: var(--yellow);
+  width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Bebas Neue'; color: var(--navy); font-size: 22px;
   clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+  overflow: hidden;
+}
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .brand-name { font-family: 'Bebas Neue'; font-size: 22px; letter-spacing: 0.08em; }
 .brand-name .colon { color: var(--yellow); }
