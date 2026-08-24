@@ -643,7 +643,7 @@ section.content {
 /* ============ FOOTER ============ */
 footer {
   background: #05061A;
-  padding: 30px 24px;
+  padding: 40px 24px 30px;
   text-align: center;
   color: rgba(255,255,255,0.4);
   font-family: 'JetBrains Mono';
@@ -652,6 +652,40 @@ footer {
   border-top: 1px solid rgba(245,166,35,0.1);
 }
 footer .paw { color: var(--yellow); }
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--yellow);
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid rgba(245,166,35,0.35);
+  font-family: 'Bebas Neue';
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  transition: all 0.2s;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.social-link:hover {
+  background: var(--yellow);
+  color: var(--navy);
+  border-color: var(--yellow);
+  transform: translateY(-2px);
+}
+.social-link svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+.footer-copy {
+  opacity: 0.85;
+}
 
 /* ============ TOAST ============ */
 .toast {
