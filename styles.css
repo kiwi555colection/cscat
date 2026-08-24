@@ -236,19 +236,19 @@ nav ul a:hover { color: var(--yellow); }
 .kill-item {
   position: absolute;
   top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
+  left: 0;
+  transform: translate3d(100vw, -50%, 0);
   display: inline-flex; align-items: center; gap: 8px;
   padding: 4px 12px;
   font-family: 'JetBrains Mono';
   font-size: 11px;
   white-space: nowrap;
-  animation: killTick 14s linear forwards;
-  will-change: left;
+  will-change: transform;
+  animation: killTick 18s linear forwards;
 }
 @keyframes killTick {
-  from { left: 100%; }
-  to { left: -420px; }
+  from { transform: translate3d(100vw, -50%, 0); }
+  to   { transform: translate3d(-100vw, -50%, 0); }
 }
 .kill-item .attacker.t { color: var(--yellow); }
 .kill-item .attacker.ct { color: var(--ct-blue); }
