@@ -562,3 +562,26 @@ function endGame() {
   startBtn.textContent = 'PLAY AGAIN';
   startBtn.style.opacity = 1;
 }
+
+// ============ CAMPAIGN COUNTDOWN ============
+// Ganti tanggal & jam deadline di bawah (format: "YYYY-MM-DDTHH:MM:SS+07:00")
+// +07:00 = WIB. Kalau mau UTC, pakai "Z"
+const CAMPAIGN_DEADLINE = new Date("2026-08-26T23:59:59+07:00");
+
+const countdownEl = document.getElementById('countdown');
+function updateCountdown() {
+  if (!countdownEl) return;
+  const now = new Date();
+  const diff = CAMPAIGN_DEADLINE - now;
+  if (diff <= 0) {
+    countdownEl.textContent = 'ENDED';
+    countdownEl.style.color = 'var(--red)';
+    return;
+  }
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  countdownEl.textContent = hours + 'H ' + minutes + 'M ' + seconds + 'S';
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
