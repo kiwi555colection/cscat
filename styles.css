@@ -840,3 +840,125 @@ footer .paw { color: var(--yellow); }
   transition: transform 0.3s;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ============ CAMPAIGN SECTION ============ */
+.campaign-section {
+  background: linear-gradient(180deg, #0B0E24 0%, #101534 100%);
+  padding: 80px 24px;
+  border-top: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--yellow);
+  position: relative;
+  overflow: hidden;
+}
+.campaign-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(245,166,35,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,166,35,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.campaign-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.campaign-eyebrow {
+  font-family: 'JetBrains Mono';
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--yellow);
+  margin-bottom: 12px;
+  animation: pulse 2s infinite;
+}
+.campaign-title {
+  font-family: 'Bebas Neue';
+  font-size: clamp(56px, 9vw, 96px);
+  line-height: 0.9;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+.campaign-title .accent { color: var(--yellow); }
+.campaign-sub {
+  font-family: 'JetBrains Mono';
+  font-size: clamp(13px, 1.5vw, 15px);
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.7);
+  margin: 10px 0 40px;
+}
+.campaign-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 36px;
+  text-align: left;
+}
+@media (max-width: 720px) { .campaign-grid { grid-template-columns: 1fr; gap: 20px; } }
+.campaign-info, .campaign-steps {
+  background: rgba(11,14,36,0.6);
+  border: 1px solid rgba(245,166,35,0.25);
+  padding: 24px;
+}
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245,166,35,0.1);
+}
+.info-row:last-child { border-bottom: none; }
+.info-row .lbl {
+  font-family: 'JetBrains Mono';
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.55);
+}
+.info-row .val {
+  font-family: 'Bebas Neue';
+  font-size: 22px;
+  color: var(--yellow);
+  letter-spacing: 0.05em;
+}
+.steps-label {
+  font-family: 'JetBrains Mono';
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--yellow);
+  margin-bottom: 14px;
+  text-align: center;
+}
+.c-step {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  background: rgba(245,166,35,0.05);
+  border-left: 2px solid var(--yellow);
+  font-family: 'JetBrains Mono';
+  font-size: 13px;
+  color: var(--white);
+}
+.c-num {
+  font-family: 'Bebas Neue';
+  font-size: 20px;
+  color: var(--yellow);
+  min-width: 26px;
+}
+.campaign-cta {
+  display: flex; gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.c-btn {
+  font-family: 'Bebas Neue';
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  padding: 14px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.c-btn.primary { background: var(--yellow); color: var(--navy); }
+.c-btn.secondary { background: transparent; color: var(--yellow); border: 1px solid var(--yellow); }
+.c-btn:hover { transform: translateY(-2px); }
