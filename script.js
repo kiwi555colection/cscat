@@ -1,5 +1,15 @@
 'use strict';
 
+// ============================================================
+// 🐾 CONTRACT ADDRESS — GANTI 2 BARIS DI BAWAH SETELAH LAUNCH
+// ============================================================
+const CA_ADDRESS = "";  // <-- Isi CA di sini, contoh: "0x1234abcd..." atau "So1a...xyz"
+const CA_EXPLORER_URL = "";  // <-- Opsional, contoh: "https://etherscan.io/token/" atau "https://solscan.io/token/"
+// ============================================================
+// Kalau CA_ADDRESS masih kosong, UI otomatis nampilin "COMING SOON"
+// Begitu diisi, top bar & hero card langsung aktif + tombol copy jalan
+// ============================================================
+
 // ============ DATA ============
 const WEAPONS = [
   { id: 'awp',    tier: 's', icon: '🎯', name: 'AWP "Alpha Whisker"',  desc: 'One-shot pounce from mid distance',     dmg: 115, rate: '0.5/s',  cost: 4750, type: 'Sniper Rifle',   accuracy: 96, range: 98 },
@@ -106,6 +116,83 @@ function showToast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
 }
+
+// ============ CA (CONTRACT ADDRESS) ============
+const caTopbar = document.getElementById('caTopbar');
+const caTopbarBtn = document.getElementById('caTopbarBtn');
+const caTopbarAddr = document.getElementById('caTopbarAddr');
+const caTopbarHint = document.getElementById('caTopbarHint');
+const heroCaCard = document.getElementById('heroCaCard');
+const heroCaAddr = document.getElementById('heroCaAddr');
+const heroCaBtn = document.getElementById('heroCaBtn');
+const heroCaExplorer = document.getElementById('heroCaExplorer');
+
+function shortenAddr(addr) {
+  if (!addr || addr.length <= 14) return addr;
+  return addr.slice(0, 6) + '...' + addr.slice(-4);
+}
+
+function copyCA() {
+  if (!CA_ADDRESS) return;
+  const doCopy = navigator.clipboard && navigator.clipboard.writeText
+    ? navigator.clipboard.writeText(CA_ADDRESS)
+    : new Promise((resolve, reject) => {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = CA_ADDRESS;
+          ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          resolve();
+        } catch (e) { reject(e); }
+      });
+
+  doCopy.then(() => {
+    showToast('📋 CA copied to clipboard');
+    soundClick();
+    caTopbar.classList.add('copied');
+    heroCaCard.classList.add('copied');
+    setTimeout(() => {
+      caTopbar.classList.remove('copied');
+      heroCaCard.classList.remove('copied');
+    }, 800);
+  }).catch(() => {
+    showToast('Copy failed — pilih & copy manual');
+  });
+}
+
+function initCA() {
+  const isLive = CA_ADDRESS && CA_ADDRESS.length > 0;
+
+  if (!isLive) {
+    // Placeholder / pre-launch state
+    caTopbarAddr.textContent = 'COMING SOON';
+    caTopbarHint.textContent = '— reveal on launch';
+    caTopbar.classList.add('disabled');
+    heroCaAddr.textContent = 'COMING SOON';
+    heroCaBtn.disabled = true;
+    heroCaBtn.innerHTML = '<span>⏳</span> TBA';
+    return;
+  }
+
+  // Live state — CA is set
+  caTopbarAddr.textContent = shortenAddr(CA_ADDRESS);
+  caTopbarHint.textContent = '— TAP TO COPY';
+  caTopbarBtn.addEventListener('click', copyCA);
+
+  heroCaAddr.textContent = CA_ADDRESS;
+  heroCaBtn.disabled = false;
+  heroCaBtn.innerHTML = '<span>📋</span> COPY';
+  heroCaBtn.addEventListener('click', copyCA);
+
+  if (CA_EXPLORER_URL) {
+    heroCaExplorer.href = CA_EXPLORER_URL + CA_ADDRESS;
+    heroCaExplorer.style.display = 'inline-flex';
+  }
+}
+initCA();
 
 // ============ TEAMS: JOIN ============
 function joinTeam(side, ev) {
