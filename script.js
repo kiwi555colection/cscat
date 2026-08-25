@@ -566,7 +566,7 @@ function endGame() {
 // ============ CAMPAIGN COUNTDOWN ============
 // Ganti tanggal & jam deadline di bawah (format: "YYYY-MM-DDTHH:MM:SS+07:00")
 // +07:00 = WIB. Kalau mau UTC, pakai "Z"
-const CAMPAIGN_DEADLINE = new Date("2026-08-26T23:59:59+07:00");
+const CAMPAIGN_DEADLINE = new Date("2026-08-26T17:00:00+07:00");
 
 const countdownEl = document.getElementById('countdown');
 function updateCountdown() {
