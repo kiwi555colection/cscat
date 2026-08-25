@@ -3,7 +3,7 @@
 // ============================================================
 // 🐾 CONTRACT ADDRESS — GANTI 2 BARIS DI BAWAH SETELAH LAUNCH
 // ============================================================
-const CA_ADDRESS = "";  // <-- Isi CA di sini, contoh: "0x1234abcd..." atau "So1a...xyz"
+const CA_ADDRESS = "0xd9730b435D64f7D6E61645Eca9AD27f8B6b88394";  // <-- Isi CA di sini, contoh: "0x1234abcd..." atau "So1a...xyz"
 const CA_EXPLORER_URL = "";  // <-- Opsional, contoh: "https://etherscan.io/token/" atau "https://solscan.io/token/"
 // ============================================================
 // Kalau CA_ADDRESS masih kosong, UI otomatis nampilin "COMING SOON"
