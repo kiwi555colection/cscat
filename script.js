@@ -3,8 +3,8 @@
 // ============================================================
 // 🐾 CONTRACT ADDRESS — GANTI 2 BARIS DI BAWAH SETELAH LAUNCH
 // ============================================================
-const CA_ADDRESS = "0x385Ee4cDd9aE70F539F8712F69f53B4B5477018c";  // <-- Isi CA di sini, contoh: "0x1234abcd..." atau "So1a...xyz"
-const CA_EXPLORER_URL = "https://www.ponsfamily.com/launchpad/0x385Ee4cDd9aE70F539F8712F69f53B4B5477018c";  // <-- Opsional, contoh: "https://etherscan.io/token/" atau "https://solscan.io/token/"
+const CA_ADDRESS = "";  // <-- Isi CA di sini, contoh: "0x1234abcd..." atau "So1a...xyz"
+const CA_EXPLORER_URL = "";  // <-- Opsional, contoh: "https://etherscan.io/token/" atau "https://solscan.io/token/"
 // ============================================================
 // Kalau CA_ADDRESS masih kosong, UI otomatis nampilin "COMING SOON"
 // Begitu diisi, top bar & hero card langsung aktif + tombol copy jalan
